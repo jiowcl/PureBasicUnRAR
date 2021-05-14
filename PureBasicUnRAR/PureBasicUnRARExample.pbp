@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x86)">
+  <section name="config">
+    <options closefiles="1" openmode="0" name="PureBasicUnRARExample"/>
+  </section>
+  <section name="data">
+    <explorer view="C:\ProgramData\PureBasic\Examples\" pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2021-05-14 15:38" user="User" host="YSI-I5-7500"/>
+  </section>
+  <section name="files">
+    <file name="Example\DllVersion.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
+      <fingerprint md5="7496a71e0027f3d9dd6fc151f13fafc9"/>
+    </file>
+    <file name="Example\ExtractFile.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
+      <fingerprint md5="9174fafca512597f4ef0fc59c7144567"/>
+    </file>
+    <file name="Example\Module\DllVersion.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
+      <fingerprint md5="5fa8418e0637e006b0f9364dd062e482"/>
+    </file>
+    <file name="Example\Module\ExtractFile.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
+      <fingerprint md5="9d24966e2b062afebc5f532d4ad6cb00"/>
+    </file>
+    <file name="Example\Module\TestExtractFile.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
+      <fingerprint md5="32787d7f76daefaf2cfcc64dd6de90cb"/>
+    </file>
+    <file name="Example\Module\TestExtractFileWithCallback.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
+      <fingerprint md5="f23d4eed65ae464fd1c38646ea56ee30"/>
+    </file>
+    <file name="Example\TestExtractFile.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
+      <fingerprint md5="74788a0d5f71784083ce3e30de6c4f63"/>
+    </file>
+    <file name="Example\TestExtractFileWithCallback.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
+      <fingerprint md5="9c882c87c03d77dfcb72ca4383b4eeb9"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="Default Target" enabled="1" default="1">
+      <inputfile value=""/>
+      <outputfile value=""/>
+      <options xpskin="1" debug="1"/>
+    </target>
+  </section>
+</project>
