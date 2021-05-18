@@ -18,7 +18,8 @@ DeclareModule UnRARArchive
   Declare.l OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)  
   Declare.l ReadHeaderEx(hArcData.l, *HeaderData.RARHeaderDataEx)
   Declare.l ProcessFileW(hArcData.l, Operation.l, DestPath.s, DestName.s)
-  Declare.l SetCallback(hArcData.l, *Callback, UserData.l)
+  Declare SetCallback(hArcData.l, *Callback, UserData.l)
+  Declare SetPassword(hArcData.l, Password.s)
   Declare.l CloseArchive(hArcData.l)
   Declare.i GetDllVersion() 
 EndDeclareModule  
@@ -96,9 +97,19 @@ Module UnRARArchive
   ; <param name="hArcData"></param>
   ; <param name="*Callback"></param>
   ; <param name="UserData"></param>
-  ; <returns>Returns long.</returns>
-  Procedure.l SetCallback(hArcData.l, *Callback, UserData.l)      
+  ; <returns>Returns void.</returns>
+  Procedure SetCallback(hArcData.l, *Callback, UserData.l)      
     ProcedureReturn RARSetCallback(UnRARWrapper::dllInstance, hArcData, *Callback, UserData)
+  EndProcedure
+  
+  ; <summary>
+  ; SetPassword
+  ; <summary>
+  ; <param name="hArcData"></param>
+  ; <param name="Password"></param>
+  ; <returns>Returns void.</returns>
+  Procedure SetPassword(hArcData.l, Password.s)      
+    ProcedureReturn RARSetPassword(UnRARWrapper::dllInstance, hArcData, Password)
   EndProcedure
   
   ; <summary>
@@ -119,6 +130,7 @@ Module UnRARArchive
   EndProcedure
 EndModule  
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 22
+; CursorPosition = 115
+; FirstLine = 80
 ; Folding = ---
 ; EnableXP
