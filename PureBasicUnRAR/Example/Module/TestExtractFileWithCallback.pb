@@ -14,7 +14,6 @@ Global lpszSampleFilePath.s = "TestFile/example.rar"
 Procedure.i UnRARCallbackProc(msg.i, UserData.l, P1.l, P2.l) 
   Select msg
     Case #UCM_PROCESSDATA
-      
     Case #UCM_CHANGEVOLUMEW
     Case #UCM_NEEDPASSWORDW 
   EndSelect
