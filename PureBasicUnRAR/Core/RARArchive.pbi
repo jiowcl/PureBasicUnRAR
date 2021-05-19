@@ -16,7 +16,7 @@ Prototype.l RARCloseArchiveFunc(hArcData.l)
 
 ; <summary>
 ; RAROpenArchiveEx
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="*ArchiveData"></param>
 ; <returns>Returns long.</returns>
@@ -34,7 +34,7 @@ EndProcedure
 
 ; <summary>
 ; RARReadHeaderEx
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="hArcData"></param>
 ; <param name="*HeaderData"></param>
@@ -53,7 +53,7 @@ EndProcedure
 
 ; <summary>
 ; RARProcessFileW
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="hArcData"></param>
 ; <param name="Operation"></param>
@@ -74,7 +74,7 @@ EndProcedure
 
 ; <summary>
 ; RARSetCallback
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="hArcData"></param>
 ; <param name="*Callback"></param>
@@ -94,7 +94,7 @@ EndProcedure
 
 ; <summary>
 ; RARSetPassword
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="hArcData"></param>
 ; <param name="Password"></param>
@@ -113,7 +113,7 @@ EndProcedure
 
 ; <summary>
 ; RARCloseArchive
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="hArcData"></param>
 ; <returns>Returns long.</returns>
