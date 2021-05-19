@@ -30,7 +30,7 @@ Module UnRARWrapper
 
   ; <summary>
   ; DllOpen
-  ; <summary>
+  ; </summary>
   ; <param name="lpszDllPath"></param>
   ; <returns>Returns integer.</returns>
   Procedure.i DllOpen(lpszDllPath.s)
@@ -45,7 +45,7 @@ Module UnRARWrapper
   
   ; <summary>
   ; DllClose
-  ; <summary>
+  ; </summary>
   ; <param name="dllInstance"></param>
   ; <returns>Returns integer.</returns>
   Procedure.i DllClose()
@@ -62,7 +62,7 @@ Module UnRARArchive
   
   ; <summary>
   ; OpenArchiveEx
-  ; <summary>
+  ; </summary>
   ; <param name="*ArchiveData"></param>
   ; <returns>Returns long.</returns>
   Procedure.l OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)     
@@ -71,7 +71,7 @@ Module UnRARArchive
   
   ; <summary>
   ; ReadHeaderEx
-  ; <summary>
+  ; </summary>
   ; <param name="hArcData"></param>
   ; <param name="*HeaderData"></param>
   ; <returns>Returns long.</returns>
@@ -81,7 +81,7 @@ Module UnRARArchive
   
   ; <summary>
   ; ProcessFileW
-  ; <summary>
+  ; </summary>
   ; <param name="hArcData"></param>
   ; <param name="Operation"></param>
   ; <param name="DestPath"></param>
@@ -93,7 +93,7 @@ Module UnRARArchive
   
   ; <summary>
   ; SetCallback
-  ; <summary>
+  ; </summary>
   ; <param name="hArcData"></param>
   ; <param name="*Callback"></param>
   ; <param name="UserData"></param>
@@ -104,7 +104,7 @@ Module UnRARArchive
   
   ; <summary>
   ; SetPassword
-  ; <summary>
+  ; </summary>
   ; <param name="hArcData"></param>
   ; <param name="Password"></param>
   ; <returns>Returns void.</returns>
@@ -114,7 +114,7 @@ Module UnRARArchive
   
   ; <summary>
   ; CloseArchive
-  ; <summary>
+  ; </summary>
   ; <param name="hArcData"></param>
   ; <returns>Returns long.</returns>
   Procedure.l CloseArchive(hArcData.l)   
@@ -123,7 +123,7 @@ Module UnRARArchive
   
   ; <summary>
   ; GetDllVersion
-  ; <summary>
+  ; </summary>
   ; <returns>Returns integer.</returns>
   Procedure.i GetDllVersion()   
     ProcedureReturn RARGetDllVersion(UnRARWrapper::dllInstance)
