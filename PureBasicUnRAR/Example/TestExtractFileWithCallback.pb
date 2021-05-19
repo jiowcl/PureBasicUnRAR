@@ -13,7 +13,6 @@ Global hLibrary = UnRARDllOpen(lpszLibUnRARDll)
 Procedure.i UnRARCallbackProc(Msg.i, UserData.l, P1.l, P2.l) 
   Select Msg
     Case #UCM_PROCESSDATA
-      
     Case #UCM_CHANGEVOLUMEW
     Case #UCM_NEEDPASSWORDW 
   EndSelect
