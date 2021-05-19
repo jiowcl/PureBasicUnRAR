@@ -9,7 +9,7 @@ Declare.i UnRARDllClose(dllInstance.i)
 
 ; <summary>
 ; UnRARDllOpen
-; <summary>
+; </summary>
 ; <param name="lpszDllPath"></param>
 ; <returns>Returns integer.</returns>
 Procedure.i UnRARDllOpen(lpszDllPath.s)
@@ -18,7 +18,7 @@ EndProcedure
 
 ; <summary>
 ; UnRARDllClose
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <returns>Returns integer.</returns>
 Procedure.i UnRARDllClose(dllInstance.i)
