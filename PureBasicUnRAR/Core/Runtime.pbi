@@ -8,7 +8,7 @@ Prototype.i RARGetDllVersionFunc()
 
 ; <summary>
 ; RARGetDllVersion
-; <summary>
+; </summary>
 ; <param name="dllInstance"></param>
 ; <returns>Returns integer.</returns>
 Procedure.i RARGetDllVersion(dllInstance.i)
