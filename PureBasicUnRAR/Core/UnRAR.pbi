@@ -7,6 +7,7 @@ XIncludeFile "LibDll.pbi"
 XIncludeFile "Enums.pbi"
 XIncludeFile "Runtime.pbi"
 XIncludeFile "RARArchive.pbi"
+XIncludeFile "Helper.pbi"
 ; IDE Options = PureBasic 5.72 (Windows - x86)
 ; CursorPosition = 3
 ; EnableXP
