@@ -3,6 +3,8 @@
 ;  Code released under the MIT license.
 ;--------------------------------------------------------------------------------------------
 
+EnableExplicit
+
 IncludeFile "../../Core/Enums.pbi"
 IncludeFile "../../Core/UnRARWrapper.pbi"
 
@@ -21,7 +23,7 @@ If DllOpen(lpszLibUnRARDll)
   DllClose()  
 EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 8
+; CursorPosition = 5
 ; EnableXP
 ; Executable = ..\..\ModuleDllVersion.exe
 ; CurrentDirectory = ./../

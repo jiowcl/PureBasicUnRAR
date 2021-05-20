@@ -8,7 +8,7 @@
 Prototype.l RAROpenArchiveExFunc(*ArchiveData.RAROpenArchiveDataEx)
 Prototype.l RARReadHeaderExFunc(hArcData.l, *HeaderData.RARHeaderDataEx)
 Prototype.l RARProcessFileWFunc(hArcData.l, Operation.l, DestPath.p-unicode, DestName.p-unicode)
-Prototype RARSetCallbackFunc(hArcData.l, *Callback, UserData.l)
+Prototype RARSetCallbackFunc(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)
 Prototype RARSetPasswordFunc(hArcData.l, Password.p-utf8)
 Prototype.l RARCloseArchiveFunc(hArcData.l)
 
@@ -77,16 +77,16 @@ EndProcedure
 ; </summary>
 ; <param name="dllInstance"></param>
 ; <param name="hArcData"></param>
-; <param name="*Callback"></param>
+; <param name="*UnRARCallback"></param>
 ; <param name="UserData"></param>
 ; <returns>Returns long.</returns>
-Procedure.l RARSetCallback(dllInstance.i, hArcData.l, *Callback, UserData.l)
+Procedure.l RARSetCallback(dllInstance.i, hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)
   Protected.i lResult
   Protected.RARSetCallbackFunc pFuncCall
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARSetCallback")
-    lResult = pFuncCall(hArcData, *Callback, UserData)
+    lResult = pFuncCall(hArcData, *UnRARCallback, UserData)
   EndIf
     
   ProcedureReturn lResult
@@ -129,7 +129,7 @@ Procedure.l RARCloseArchive(dllInstance.i, hArcData.l)
   ProcedureReturn lResult
 EndProcedure
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 11
+; CursorPosition = 5
 ; Folding = --
 ; EnableXP
 ; IncludeVersionInfo

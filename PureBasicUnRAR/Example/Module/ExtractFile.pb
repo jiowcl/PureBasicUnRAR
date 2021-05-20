@@ -3,6 +3,8 @@
 ;  Code released under the MIT license.
 ;--------------------------------------------------------------------------------------------
 
+EnableExplicit
+
 IncludeFile "../../Core/Enums.pbi"
 IncludeFile "../../Core/UnRARWrapper.pbi"
 
@@ -15,24 +17,30 @@ Global lpszOutputPath.s = "TestFile/Output/Example"
 If DllOpen(lpszLibUnRARDll)
   OpenConsole()
   
-  HeaderData.RARHeaderDataEx
-  ArchiveData.RAROpenArchiveDataEx
+  Define HeaderData.RARHeaderDataEx
+  Define ArchiveData.RAROpenArchiveDataEx
   
-  ArchiveDataCmt.s = Space(16383) + Chr(0)
+  Define ArchiveDataCmt.s = Space(16383) + Chr(0)
   
   ArchiveData\ArcNameW = @lpszSampleFilePath
   ArchiveData\OpenMode = #RAR_OM_EXTRACT
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
+  Define hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
    
-  If ArchiveData\OpenResult = 0
+  If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
     
-    While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = 0
-      extractFile.s = PeekS(@HeaderData\FileNameW) 
-      hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_EXTRACT, "", lpszOutputPath + "/" + extractFile)
+    While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
+      Define extractFile.s = PeekS(@HeaderData\FileNameW) 
+      Define hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_EXTRACT, "", lpszOutputPath + "/" + extractFile)
+      
+      If hUnRARProcCode <> #ERAR_SUCCESS
+        PrintN("Test File Failed: " + extractFile)
+        
+        Continue
+      EndIf
       
       PrintN("Extract File: " + extractFile)
     Wend
@@ -44,7 +52,7 @@ If DllOpen(lpszLibUnRARDll)
   DllClose()  
 EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 34
+; CursorPosition = 42
 ; EnableXP
 ; Executable = ..\..\ModuleExtractFile.exe
 ; CurrentDirectory = ./../

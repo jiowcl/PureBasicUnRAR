@@ -45,6 +45,24 @@
 
 ; Structure
 
+Structure RARHeaderData
+  ArcName.b[260] 
+  FileName.b[260]
+  Flags.l 
+  PackSize.l 
+  UnpSize.l 
+  HostOS.l 
+  FileCRC.l 
+  FileTime.l 
+  UnpVer.l 
+  Method.l 
+  FileAttr.l 
+  *CmtBuf
+  CmtBufSize.l 
+  CmtSize.l 
+  CmtState.l
+EndStructure 
+
 Structure RARHeaderDataEx
   ArcName.b[1024] 
   ArcNameW.w[1024]
@@ -80,6 +98,16 @@ Structure RARHeaderDataEx
   Reserved.l[988]
 EndStructure  
 
+Structure RAROpenArchiveData
+  *ArcName
+  OpenMode.l
+  OpenResult.l
+  *CmtBuf
+  CmtBufSize.l
+  CmtSize.l
+  CmtState.l
+EndStructure
+
 Structure RAROpenArchiveDataEx
   *ArcName
   *ArcNameW
@@ -96,9 +124,13 @@ Structure RAROpenArchiveDataEx
   *CmtBufW
   Reserved.l[25]
 EndStructure
+
+; Prototype Callback Function
+
+Prototype.i UnRARCallbackProc(Msg.i, UserData.l, P1.l, P2.l)
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 47
-; FirstLine = 24
+; CursorPosition = 108
+; FirstLine = 79
 ; EnableXP
 ; IncludeVersionInfo
 ; VersionField2 = Inwazy Technology

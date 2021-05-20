@@ -3,10 +3,14 @@
 ;  Code released under the MIT license.
 ;--------------------------------------------------------------------------------------------
 
+CompilerIf #PB_Compiler_Version < 520
+  CompilerWarning "PureBasic 5.2.0 Version Required."
+CompilerEndIf  
+  
 ; Declare Module UnRARWrapper
 
 DeclareModule UnRARWrapper
-  Global dllInstance
+  Global dllInstance.i
   
   Declare.i DllOpen(lpszDllPath.s)
   Declare.i DllClose()
@@ -14,17 +18,18 @@ EndDeclareModule
 
 DeclareModule UnRARArchive 
   IncludeFile "Enums.pbi"
-  
+   
   Declare.l OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)  
   Declare.l ReadHeaderEx(hArcData.l, *HeaderData.RARHeaderDataEx)
   Declare.l ProcessFileW(hArcData.l, Operation.l, DestPath.s, DestName.s)
-  Declare SetCallback(hArcData.l, *Callback, UserData.l)
+  Declare SetCallback(hArcData.l, *UnRARCallback, UserData.l)
   Declare SetPassword(hArcData.l, Password.s)
   Declare.l CloseArchive(hArcData.l)
   Declare.i GetDllVersion() 
 EndDeclareModule  
 
 ; Module UnRARWrapper
+
 Module UnRARWrapper
   IncludeFile "LibDll.pbi"
 
@@ -95,11 +100,11 @@ Module UnRARArchive
   ; SetCallback
   ; </summary>
   ; <param name="hArcData"></param>
-  ; <param name="*Callback"></param>
+  ; <param name="*UnRARCallback"></param>
   ; <param name="UserData"></param>
   ; <returns>Returns void.</returns>
-  Procedure SetCallback(hArcData.l, *Callback, UserData.l)      
-    ProcedureReturn RARSetCallback(UnRARWrapper::dllInstance, hArcData, *Callback, UserData)
+  Procedure SetCallback(hArcData.l, *UnRARCallback, UserData.l)      
+    ProcedureReturn RARSetCallback(UnRARWrapper::dllInstance, hArcData, *UnRARCallback, UserData)
   EndProcedure
   
   ; <summary>
@@ -130,7 +135,6 @@ Module UnRARArchive
   EndProcedure
 EndModule  
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 115
-; FirstLine = 80
+; CursorPosition = 5
 ; Folding = ---
 ; EnableXP

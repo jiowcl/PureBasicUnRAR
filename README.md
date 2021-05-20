@@ -20,6 +20,8 @@ Module features require PureBasic 5.20 and above.
 Extract the RAR file
 
 ```purebasic
+EnableExplicit
+
 IncludeFile "../../Core/Enums.pbi"
 IncludeFile "../../Core/UnRARWrapper.pbi"
 
@@ -31,24 +33,24 @@ Global lpszSampleFilePath.s = "TestFile/example.rar"
 If DllOpen(lpszLibUnRARDll)
   OpenConsole()
   
-  HeaderData.RARHeaderDataEx
-  ArchiveData.RAROpenArchiveDataEx
+  Define HeaderData.RARHeaderDataEx
+  Define ArchiveData.RAROpenArchiveDataEx
   
-  ArchiveDataCmt.s = Space(16383) + Chr(0)
+  Define ArchiveDataCmt.s = Space(16383) + Chr(0)
   
   ArchiveData\ArcNameW = @lpszSampleFilePath
   ArchiveData\OpenMode = #RAR_OM_EXTRACT
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
+  Define hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
    
   If ArchiveData\OpenResult = 0
     PrintN("Source: " + lpszSampleFilePath)
     
     While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = 0
-      extractFile.s = PeekS(@HeaderData\FileNameW) 
-      hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
+      Define extractFile.s = PeekS(@HeaderData\FileNameW) 
+      Define hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
       
       PrintN("Test File: " + extractFile)
     Wend
