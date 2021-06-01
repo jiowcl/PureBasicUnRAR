@@ -3,11 +3,43 @@
 ;  Code released under the MIT license.
 ;--------------------------------------------------------------------------------------------
 
+; Windows APIs 
+#SCS_32BIT_BINARY = 0
+#SCS_64BIT_BINARY = 6
+#SCS_DOS_BINARY   = 1
+#SCS_OS216_BINARY = 5
+#SCS_PIF_BINARY   = 3
+#SCS_POSIX_BINARY = 4
+#SCS_WOW_BINARY   = 2
+
 ; Header HOSTOS
 #RAR_HEADER_HOSTOS_MSDOS = 0
 #RAR_HEADER_HOSTOS_OS2   = 1
 #RAR_HEADER_HOSTOS_WIN32 = 2
 #RAR_HEADER_HOSTOS_UNIX  = 3
+
+; <summary>
+; HasSFX
+; </summary>
+; <param name="FilePath"></param>
+; <returns>Returns boolean.</returns>
+Procedure.i HasSFX(FilePath.s)
+  Protected.i result = #False
+  Protected.l BinaryType
+  Protected.i GetBinaryTypeResult
+  
+CompilerIf #PB_Compiler_OS = #PB_OS_Windows
+  GetBinaryTypeResult = GetBinaryType_(FilePath, @BinaryType)
+  
+  If GetBinaryTypeResult 
+    If BinaryType = #SCS_32BIT_BINARY Or BinaryType = #SCS_64BIT_BINARY 
+      result = #True
+    EndIf  
+  EndIf
+CompilerEndIf 
+
+  ProcedureReturn result
+EndProcedure
 
 ; <summary>
 ; FormatHeaderHostOs
