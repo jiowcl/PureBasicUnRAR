@@ -10,7 +10,13 @@ IncludeFile "../../Core/UnRARWrapper.pbi"
 
 UseModule UnRARWrapper
 
-Global lpszLibUnRARDll.s = "UnRAR.dll"
+; UnRAR version (x86/x64)
+CompilerIf #PB_Compiler_Processor = #PB_Processor_x64
+  Global lpszLibUnRARDll.s = "UnRAR64.dll"
+CompilerElse
+  Global lpszLibUnRARDll.s = "UnRAR.dll"
+CompilerEndIf
+
 Global lpszSampleFilePath.s = "TestFile/example.rar"
 
 If DllOpen(lpszLibUnRARDll)
@@ -50,8 +56,9 @@ If DllOpen(lpszLibUnRARDll)
   
   DllClose()  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 41
+; IDE Options = PureBasic 5.72 (Windows - x64)
+; CursorPosition = 18
+; Folding = -
 ; EnableXP
 ; Executable = ..\..\ModuleTestExtractFile.exe
-; CurrentDirectory = ./../
+; CurrentDirectory = ../../

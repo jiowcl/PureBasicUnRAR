@@ -26,6 +26,10 @@ DeclareModule UnRARArchive
   Declare SetPassword(hArcData.l, Password.s)
   Declare.l CloseArchive(hArcData.l)
   Declare.i GetDllVersion() 
+EndDeclareModule
+
+DeclareModule UnRARHelper
+  Declare.i HasSFX(FilePath.s)
 EndDeclareModule  
 
 ; Module UnRARWrapper
@@ -134,7 +138,22 @@ Module UnRARArchive
     ProcedureReturn RARGetDllVersion(UnRARWrapper::dllInstance)
   EndProcedure
 EndModule  
+
+; Module UnRARHelper
+Module UnRARHelper
+  IncludeFile "Helper.pbi"
+  
+  ; <summary>
+  ; HasSFX
+  ; </summary>
+  ; <param name="FilePath"></param>
+  ; <returns>Returns boolean.</returns>
+  Procedure.i HasSFX(FilePath.s) 
+    ProcedureReturn RARHasSFX(FilePath)
+  EndProcedure  
+EndModule
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 5
+; CursorPosition = 143
+; FirstLine = 102
 ; Folding = ---
 ; EnableXP

@@ -7,7 +7,13 @@ EnableExplicit
 
 IncludeFile "../Core/UnRAR.pbi"
 
-Global lpszLibUnRARDll.s = "UnRAR.dll"
+; UnRAR version (x86/x64)
+CompilerIf #PB_Compiler_Processor = #PB_Processor_x64
+  Global lpszLibUnRARDll.s = "UnRAR64.dll"
+CompilerElse
+  Global lpszLibUnRARDll.s = "UnRAR.dll"
+CompilerEndIf
+
 Global lpszSampleFilePath.s = "TestFile/example.rar"
 
 Global hLibrary.i = UnRARDllOpen(lpszLibUnRARDll)
@@ -61,10 +67,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 49
-; FirstLine = 8
+; IDE Options = PureBasic 5.72 (Windows - x64)
+; CursorPosition = 15
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFileWithCallback.exe
-; CurrentDirectory = ./
+; CurrentDirectory = ../

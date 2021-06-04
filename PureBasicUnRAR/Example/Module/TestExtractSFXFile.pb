@@ -5,7 +5,10 @@
 
 EnableExplicit
 
-IncludeFile "../Core/UnRAR.pbi"
+IncludeFile "../../Core/Enums.pbi"
+IncludeFile "../../Core/UnRARWrapper.pbi"
+
+UseModule UnRARWrapper
 
 ; UnRAR version (x86/x64)
 CompilerIf #PB_Compiler_Processor = #PB_Processor_x64
@@ -14,13 +17,14 @@ CompilerElse
   Global lpszLibUnRARDll.s = "UnRAR.dll"
 CompilerEndIf
 
-Global lpszSampleFilePath.s = "TestFile/examplewithpw.rar"
-Global lpszPassword.s = "abcd1234"
+Global lpszSampleFilePath.s = "TestFile/examplesfx.exe"
 
-Global hLibrary.i = UnRARDllOpen(lpszLibUnRARDll)
-
-If hLibrary
+If DllOpen(lpszLibUnRARDll)
   OpenConsole()
+  
+  If Not UnRARHelper::HasSFX(lpszSampleFilePath)
+    ConsoleError("Error: Non-RAR SFX File!")
+  EndIf
   
   Define HeaderData.RARHeaderDataEx
   Define ArchiveData.RAROpenArchiveDataEx
@@ -32,17 +36,14 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
-    PrintN("Password: " + lpszPassword)
     
-    RARSetPassword(hLibrary, hRARArchiveHandle, lpszPassword)
-                 
-    While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
+    While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -57,11 +58,11 @@ If hLibrary
   Input()
   CloseConsole()
   
-  UnRARDllClose(hLibrary)  
+  DllClose()  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 15
+; IDE Options = PureBasic 5.72 (Windows - x86)
+; CursorPosition = 24
 ; Folding = -
 ; EnableXP
-; Executable = ..\TestExtractFileWithPw.exe
-; CurrentDirectory = ../
+; Executable = ..\..\ModuleTestExtractFile.exe
+; CurrentDirectory = ../../

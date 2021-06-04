@@ -19,11 +19,11 @@
 #RAR_HEADER_HOSTOS_UNIX  = 3
 
 ; <summary>
-; HasSFX
+; RARHasSFX
 ; </summary>
 ; <param name="FilePath"></param>
 ; <returns>Returns boolean.</returns>
-Procedure.i HasSFX(FilePath.s)
+Procedure.i RARHasSFX(FilePath.s)
   Protected.i result = #False
   Protected.l BinaryType
   Protected.i GetBinaryTypeResult
@@ -85,7 +85,6 @@ Procedure.s FormatHeaderFileAttr(FileAttr.l)
   ProcedureReturn result
 EndProcedure
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 49
-; FirstLine = 3
+; CursorPosition = 21
 ; Folding = -
 ; EnableXP
