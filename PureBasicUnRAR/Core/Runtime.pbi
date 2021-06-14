@@ -12,16 +12,20 @@ Prototype.i RARGetDllVersionFunc()
 ; <param name="dllInstance"></param>
 ; <returns>Returns integer.</returns>
 Procedure.i RARGetDllVersion(dllInstance.i)
+  Protected.i lResult
   Protected.RARGetDllVersionFunc pFuncCall
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARGetDllVersion")
-    ProcedureReturn pFuncCall()
+    
+    If pFuncCall > 0
+      lResult = pFuncCall()
+    EndIf  
   EndIf
   
-  ProcedureReturn 0
+  ProcedureReturn lResult
 EndProcedure
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 3
+; CursorPosition = 25
 ; Folding = -
 ; EnableXP

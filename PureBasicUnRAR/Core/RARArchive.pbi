@@ -26,7 +26,10 @@ Procedure.l RAROpenArchiveEx(dllInstance.i, *ArchiveData.RAROpenArchiveDataEx)
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RAROpenArchiveEx")
-    lResult = pFuncCall(*ArchiveData)
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(*ArchiveData)
+    EndIf  
   EndIf
     
   ProcedureReturn lResult
@@ -45,7 +48,10 @@ Procedure.l RARReadHeaderEx(dllInstance.i, hArcData.l, *HeaderData.RARHeaderData
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARReadHeaderEx")
-    lResult = pFuncCall(hArcData, *HeaderData)
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(hArcData, *HeaderData)
+    EndIf  
   EndIf
     
   ProcedureReturn lResult
@@ -66,7 +72,10 @@ Procedure.l RARProcessFileW(dllInstance.i, hArcData.l, Operation.l, DestPath.s, 
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARProcessFileW")
-    lResult = pFuncCall(hArcData, Operation, DestPath, DestName)
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(hArcData, Operation, DestPath, DestName)
+    EndIf  
   EndIf
     
   ProcedureReturn lResult
@@ -86,7 +95,10 @@ Procedure.l RARSetCallback(dllInstance.i, hArcData.l, *UnRARCallback.UnRARCallba
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARSetCallback")
-    lResult = pFuncCall(hArcData, *UnRARCallback, UserData)
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(hArcData, *UnRARCallback, UserData)
+    EndIf  
   EndIf
     
   ProcedureReturn lResult
@@ -105,7 +117,10 @@ Procedure RARSetPassword(dllInstance.i, hArcData.l, Password.s)
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARSetPassword")
-    lResult = pFuncCall(hArcData, Password)
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(hArcData, Password)
+    EndIf  
   EndIf
   
   ProcedureReturn lResult
@@ -123,13 +138,17 @@ Procedure.l RARCloseArchive(dllInstance.i, hArcData.l)
   
   If IsLibrary(dllInstance)
     pFuncCall = GetFunction(dllInstance, "RARCloseArchive")
-    lResult = pFuncCall(hArcData)
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(hArcData)
+    EndIf  
   EndIf
   
   ProcedureReturn lResult
 EndProcedure
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 5
+; CursorPosition = 143
+; FirstLine = 97
 ; Folding = --
 ; EnableXP
 ; IncludeVersionInfo
