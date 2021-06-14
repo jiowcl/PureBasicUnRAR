@@ -12,7 +12,7 @@ UnRAR Wrapper for PureBasic Programming Language.
 
 ## How to Build
 
-Building requires PureBasic Compiler and test under Windows 10. 
+Building requires PureBasic Compiler and test under Windows 10.  
 Module features require PureBasic 5.20 and above.
 
 ## Example
