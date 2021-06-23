@@ -128,9 +128,10 @@ EndStructure
 ; Prototype Callback Function
 
 Prototype.i UnRARCallbackProc(Msg.i, UserData.l, P1.l, P2.l)
+Prototype.i UnRARProcessDataProc(*Addr.Long, Size.i)
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 108
-; FirstLine = 79
+; CursorPosition = 130
+; FirstLine = 80
 ; EnableXP
 ; IncludeVersionInfo
 ; VersionField2 = Inwazy Technology

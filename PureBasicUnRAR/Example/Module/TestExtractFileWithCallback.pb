@@ -19,6 +19,7 @@ CompilerEndIf
 
 Global lpszSampleFilePath.s = "TestFile/example.rar"
 
+; UnRAR Callback Proc
 Procedure.i UnRARCallbackProc(msg.i, UserData.l, P1.l, P2.l) 
   Select msg
     Case #UCM_PROCESSDATA
@@ -68,8 +69,8 @@ If DllOpen(lpszLibUnRARDll)
   
   DllClose()  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 18
+; IDE Options = PureBasic 5.72 (Windows - x86)
+; CursorPosition = 21
 ; FirstLine = 6
 ; Folding = -
 ; EnableXP

@@ -7,44 +7,52 @@
   <section name="data">
     <explorer view="C:\ProgramData\PureBasic\Examples\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2021-05-18 19:25" user="Fred" host="DESKTOP-ATREA"/>
+    <lastopen date="2021-06-23 23:04" user="Fred" host="DESKTOP-ATREA"/>
   </section>
   <section name="files">
     <file name="Example\DllVersion.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="7496a71e0027f3d9dd6fc151f13fafc9"/>
+      <fingerprint md5="d29361d94537da7d7e4e969a72a857c6"/>
     </file>
     <file name="Example\ExtractFile.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="9174fafca512597f4ef0fc59c7144567"/>
+      <fingerprint md5="9d7b5d9bc3a2ad6196aba5609877e381"/>
     </file>
     <file name="Example\Module\DllVersion.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
-      <fingerprint md5="5fa8418e0637e006b0f9364dd062e482"/>
+      <fingerprint md5="7e349a23e71c6a6f1f77a24115c70b45"/>
     </file>
     <file name="Example\Module\ExtractFile.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
-      <fingerprint md5="9d24966e2b062afebc5f532d4ad6cb00"/>
+      <fingerprint md5="fa86ae3bba2e368eadb6e544f23a0009"/>
     </file>
     <file name="Example\Module\TestExtractFile.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
-      <fingerprint md5="32787d7f76daefaf2cfcc64dd6de90cb"/>
+      <fingerprint md5="da40b8546b1145c0523dddb167b76be4"/>
     </file>
     <file name="Example\Module\TestExtractFileWithCallback.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
-      <fingerprint md5="f23d4eed65ae464fd1c38646ea56ee30"/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+++"/>
+      <fingerprint md5="95617b104f286313837ca24a8c33bb4e"/>
     </file>
     <file name="Example\TestExtractFile.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="74788a0d5f71784083ce3e30de6c4f63"/>
+      <fingerprint md5="6c19f9632356622f21adcba034e06166"/>
     </file>
     <file name="Example\TestExtractFileWithCallback.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="9c882c87c03d77dfcb72ca4383b4eeb9"/>
+      <fingerprint md5="79b94e0ba0b5c7e795252c1fe76638b6"/>
     </file>
     <file name="Example\TestExtractFileWithPw.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="64c462212f886448e6e1aae3e171e100"/>
+      <fingerprint md5="d690d040c3a7cd04a6647f9f84d18e2a"/>
+    </file>
+    <file name="Example\TestExtractFileWithDataProcess.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
+      <fingerprint md5="718dea1e24a4eb9e89a7f1b2526a7793"/>
+    </file>
+    <file name="Example\Module\TestExtractFileWithDataProcess.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+++"/>
+      <fingerprint md5="8e9b0bd08f14e867b0986dda6228b4f7"/>
     </file>
   </section>
   <section name="targets">

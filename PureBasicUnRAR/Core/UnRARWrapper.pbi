@@ -22,7 +22,8 @@ DeclareModule UnRARArchive
   Declare.l OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)  
   Declare.l ReadHeaderEx(hArcData.l, *HeaderData.RARHeaderDataEx)
   Declare.l ProcessFileW(hArcData.l, Operation.l, DestPath.s, DestName.s)
-  Declare SetCallback(hArcData.l, *UnRARCallback, UserData.l)
+  Declare SetCallback(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)
+  Declare SetProcessDataProc(hArcData.l, *ProcessDataProc.UnRARProcessDataProc)
   Declare SetPassword(hArcData.l, Password.s)
   Declare.l CloseArchive(hArcData.l)
   Declare.i GetDllVersion() 
@@ -107,10 +108,20 @@ Module UnRARArchive
   ; <param name="*UnRARCallback"></param>
   ; <param name="UserData"></param>
   ; <returns>Returns void.</returns>
-  Procedure SetCallback(hArcData.l, *UnRARCallback, UserData.l)      
+  Procedure SetCallback(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)      
     ProcedureReturn RARSetCallback(UnRARWrapper::dllInstance, hArcData, *UnRARCallback, UserData)
   EndProcedure
   
+  ; <summary>
+  ; SetProcessDataProc
+  ; </summary>
+  ; <param name="hArcData"></param>
+  ; <param name="*ProcessDataProc"></param>
+  ; <returns>Returns void.</returns>
+  Procedure SetProcessDataProc(hArcData.l, *ProcessDataProc.UnRARProcessDataProc)      
+    ProcedureReturn RARSetProcessDataProc(UnRARWrapper::dllInstance, hArcData, *ProcessDataProc)
+  EndProcedure
+   
   ; <summary>
   ; SetPassword
   ; </summary>
@@ -153,7 +164,7 @@ Module UnRARHelper
   EndProcedure  
 EndModule
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 143
-; FirstLine = 102
-; Folding = ---
+; CursorPosition = 110
+; FirstLine = 99
+; Folding = ----
 ; EnableXP

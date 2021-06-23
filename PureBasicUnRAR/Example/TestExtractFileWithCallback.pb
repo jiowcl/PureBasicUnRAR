@@ -18,6 +18,7 @@ Global lpszSampleFilePath.s = "TestFile/example.rar"
 
 Global hLibrary.i = UnRARDllOpen(lpszLibUnRARDll)
 
+; UnRAR Callback Proc
 Procedure.i UnRARCallbackProc(Msg.i, UserData.l, P1.l, P2.l) 
   Select Msg
     Case #UCM_PROCESSDATA
@@ -67,8 +68,8 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 15
+; IDE Options = PureBasic 5.72 (Windows - x86)
+; CursorPosition = 20
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFileWithCallback.exe

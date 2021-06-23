@@ -55,8 +55,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 15
+; IDE Options = PureBasic 5.72 (Windows - x86)
+; CursorPosition = 36
+; FirstLine = 2
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFile.exe
