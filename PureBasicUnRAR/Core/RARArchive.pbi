@@ -9,6 +9,7 @@ Prototype.l RAROpenArchiveExFunc(*ArchiveData.RAROpenArchiveDataEx)
 Prototype.l RARReadHeaderExFunc(hArcData.l, *HeaderData.RARHeaderDataEx)
 Prototype.l RARProcessFileWFunc(hArcData.l, Operation.l, DestPath.p-unicode, DestName.p-unicode)
 Prototype RARSetCallbackFunc(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)
+Prototype RARSetChangeVolProcFunc(hArcData.l, *ChangeVolProc.UnRARChangeVolProc)
 Prototype RARSetProcessDataProcFunc(hArcData.l, *ProcessDataProc.UnRARProcessDataProc)
 Prototype RARSetPasswordFunc(hArcData.l, Password.p-utf8)
 Prototype.l RARCloseArchiveFunc(hArcData.l)
@@ -102,6 +103,28 @@ Procedure.l RARSetCallback(dllInstance.i, hArcData.l, *UnRARCallback.UnRARCallba
     EndIf  
   EndIf
     
+  ProcedureReturn lResult
+EndProcedure
+
+; <summary>
+; RARSetChangeVolProc
+; </summary>
+; <param name="dllInstance"></param>
+; <param name="hArcData"></param>
+; <param name="*ChangeVolProc"></param>
+; <returns>Returns void.</returns>
+Procedure RARSetChangeVolProc(dllInstance.i, hArcData.l, *ChangeVolProc.UnRARChangeVolProc)
+  Protected.l lResult
+  Protected.RARSetChangeVolProcFunc pFuncCall
+  
+  If IsLibrary(dllInstance)
+    pFuncCall = GetFunction(dllInstance, "RARSetChangeVolProc")
+    
+    If pFuncCall > 0
+      lResult = pFuncCall(hArcData, *ChangeVolProc)
+    EndIf  
+  EndIf
+  
   ProcedureReturn lResult
 EndProcedure
 
