@@ -23,6 +23,7 @@ DeclareModule UnRARArchive
   Declare.l ReadHeaderEx(hArcData.l, *HeaderData.RARHeaderDataEx)
   Declare.l ProcessFileW(hArcData.l, Operation.l, DestPath.s, DestName.s)
   Declare SetCallback(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)
+  Declare SetChangeVolProc(hArcData.l, *ChangeVolProc.UnRARChangeVolProc)
   Declare SetProcessDataProc(hArcData.l, *ProcessDataProc.UnRARProcessDataProc)
   Declare SetPassword(hArcData.l, Password.s)
   Declare.l CloseArchive(hArcData.l)
@@ -110,6 +111,16 @@ Module UnRARArchive
   ; <returns>Returns void.</returns>
   Procedure SetCallback(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)      
     ProcedureReturn RARSetCallback(UnRARWrapper::dllInstance, hArcData, *UnRARCallback, UserData)
+  EndProcedure
+  
+  ; <summary>
+  ; SetChangeVolProc
+  ; </summary>
+  ; <param name="hArcData"></param>
+  ; <param name="*ChangeVolProc"></param>
+  ; <returns>Returns void.</returns>
+  Procedure SetChangeVolProc(hArcData.l, *ChangeVolProc.UnRARChangeVolProc)      
+    ProcedureReturn RARSetChangeVolProc(UnRARWrapper::dllInstance, hArcData, *ChangeVolProc)
   EndProcedure
   
   ; <summary>
