@@ -128,6 +128,7 @@ EndStructure
 ; Prototype Callback Function
 
 Prototype.i UnRARCallbackProc(Msg.i, UserData.l, P1.l, P2.l)
+Prototype.i UnRARChangeVolProc(*ArcName, Mode.i)
 Prototype.i UnRARProcessDataProc(*Addr.Long, Size.i)
 ; IDE Options = PureBasic 5.72 (Windows - x86)
 ; CursorPosition = 130
