@@ -14,13 +14,13 @@ CompilerElse
   Global lpszLibUnRARDll.s = "UnRAR.dll"
 CompilerEndIf
 
-Global lpszSampleFilePath.s = "TestFile/example.rar"
+Global lpszSampleFilePath.s = "TestFile/mexample.part1.rar"
 
 Global hLibrary.i = UnRARDllOpen(lpszLibUnRARDll)
 
-; UnRAR DataProcess Proc
-Procedure.i UnRARProcessDataProc(*Addr.Long, Size.i)  
-  PrintN("Data Processed: " + PeekS(*Addr, -1, #PB_UTF8))
+; UnRAR ChangeVol Proc
+Procedure.i UnRARChangeVolProc(*ArcName, Mode.i)
+  PrintN("Change Vol: " + PeekS(*ArcName, -1, #PB_UTF8) + ", Mode: " + Mode)
   
   ProcedureReturn #True
 EndProcedure
@@ -41,7 +41,7 @@ If hLibrary
   Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
-    RARSetProcessDataProc(hLibrary, hRARArchiveHandle, @UnRARProcessDataProc())
+    RARSetChangeVolProc(hLibrary, hRARArchiveHandle, @UnRARChangeVolProc())
     
     PrintN("Source: " + lpszSampleFilePath)
     
@@ -65,8 +65,7 @@ If hLibrary
   UnRARDllClose(hLibrary)  
 EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 48
-; FirstLine = 15
+; CursorPosition = 22
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFileWithDataProcess.exe

@@ -5,7 +5,10 @@
 
 EnableExplicit
 
-IncludeFile "../Core/UnRAR.pbi"
+IncludeFile "../../Core/Enums.pbi"
+IncludeFile "../../Core/UnRARWrapper.pbi"
+
+UseModule UnRARWrapper
 
 ; UnRAR version (x86/x64)
 CompilerIf #PB_Compiler_Processor = #PB_Processor_x64
@@ -14,18 +17,16 @@ CompilerElse
   Global lpszLibUnRARDll.s = "UnRAR.dll"
 CompilerEndIf
 
-Global lpszSampleFilePath.s = "TestFile/example.rar"
+Global lpszSampleFilePath.s = "TestFile/mexample.part1.rar"
 
-Global hLibrary.i = UnRARDllOpen(lpszLibUnRARDll)
-
-; UnRAR DataProcess Proc
-Procedure.i UnRARProcessDataProc(*Addr.Long, Size.i)  
-  PrintN("Data Processed: " + PeekS(*Addr, -1, #PB_UTF8))
+; UnRAR ChangeVol Proc
+Procedure.i UnRARChangeVolProc(*ArcName, Mode.i)
+  PrintN("Change Vol: " + PeekS(*ArcName, -1, #PB_UTF8) + ", Mode: " + Mode)
   
   ProcedureReturn #True
 EndProcedure
 
-If hLibrary
+If DllOpen(lpszLibUnRARDll)
   OpenConsole()
   
   Define HeaderData.RARHeaderDataEx
@@ -38,16 +39,16 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
-    RARSetProcessDataProc(hLibrary, hRARArchiveHandle, @UnRARProcessDataProc())
+    UnRARArchive::SetChangeVolProc(hRARArchiveHandle, @UnRARChangeVolProc())
     
     PrintN("Source: " + lpszSampleFilePath)
     
-    While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
+    While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -62,12 +63,11 @@ If hLibrary
   Input()
   CloseConsole()
   
-  UnRARDllClose(hLibrary)  
+  DllClose()  
 EndIf
 ; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 48
-; FirstLine = 15
+; CursorPosition = 19
 ; Folding = -
 ; EnableXP
-; Executable = ..\TestExtractFileWithDataProcess.exe
-; CurrentDirectory = ../
+; Executable = ..\..\ModuleTestExtractFileWithDataProcess.exe
+; CurrentDirectory = ../../
