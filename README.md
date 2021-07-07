@@ -6,14 +6,14 @@ UnRAR Wrapper for PureBasic Programming Language.
 
 ## Environment
 
-- Windows 7 above (recommend)
-- PureBasic 5.0 above (recommend)
-- [UnRAR](https://www.rarlab.com/rar_add.htm)
+- Windows 7 above (recommend)  
+- PureBasic 5.0 above (recommend)  
+- [UnRAR](https://www.rarlab.com/rar_add.htm)  
 
 ## How to Build
 
 Building requires PureBasic Compiler and test under Windows 10.  
-Module features require PureBasic 5.20 and above.
+Module features require PureBasic 5.20 and above.  
 
 ## Example
 
@@ -66,12 +66,11 @@ EndIf
 ## License
 
 Copyright (c) 2017-2021 Ji-Feng Tsai.  
-
-Code released under the MIT license.
+Code released under the MIT license.  
 
 ## TODO
 
-- More examples
+- More examples  
 
 ## Donation
 
