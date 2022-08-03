@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x86)">
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.72 (Windows - x64)">
   <section name="config">
     <options closefiles="1" openmode="0" name="PureBasicUnRARExample"/>
   </section>
   <section name="data">
     <explorer view="C:\ProgramData\PureBasic\Examples\" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2021-06-29 22:22" user="Fred" host="DESKTOP-ATREA"/>
+    <lastopen date="2022-08-03 23:46" user="Fred" host="DESKTOP-AKUI43D"/>
   </section>
   <section name="files">
     <file name="Example\DllVersion.pb">
@@ -34,6 +34,10 @@
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+++"/>
       <fingerprint md5="95617b104f286313837ca24a8c33bb4e"/>
     </file>
+    <file name="Example\Module\TestExtractFileWithChangeVol.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
+      <fingerprint md5="2d6d5b52139bb65e38ad1d666e9d5d0c"/>
+    </file>
     <file name="Example\Module\TestExtractFileWithDataProcess.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+++"/>
       <fingerprint md5="8e9b0bd08f14e867b0986dda6228b4f7"/>
@@ -46,6 +50,10 @@
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
       <fingerprint md5="79b94e0ba0b5c7e795252c1fe76638b6"/>
     </file>
+    <file name="Example\TestExtractFileWithChangeVol.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
+      <fingerprint md5="51d12d4c3dc9fab5ef7a6e97c938fe4d"/>
+    </file>
     <file name="Example\TestExtractFileWithDataProcess.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="++"/>
       <fingerprint md5="6eb49323faa90a10936ab1a2b9058be0"/>
@@ -53,14 +61,6 @@
     <file name="Example\TestExtractFileWithPw.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
       <fingerprint md5="d690d040c3a7cd04a6647f9f84d18e2a"/>
-    </file>
-    <file name="Example\TestExtractFileWithChangeVol.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="++"/>
-      <fingerprint md5="51d12d4c3dc9fab5ef7a6e97c938fe4d"/>
-    </file>
-    <file name="Example\Module\TestExtractFileWithChangeVol.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+++"/>
-      <fingerprint md5="2d6d5b52139bb65e38ad1d666e9d5d0c"/>
     </file>
   </section>
   <section name="targets">
