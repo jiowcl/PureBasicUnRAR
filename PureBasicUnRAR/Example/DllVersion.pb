@@ -28,9 +28,9 @@ If hLibrary
    
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 26
+; IDE Options = PureBasic 6.00 LTS (Windows - x64)
 ; Folding = -
+; Optimizer
 ; EnableXP
 ; Executable = ..\DllVersion.exe
 ; CurrentDirectory = ../
