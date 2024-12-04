@@ -8,7 +8,7 @@ UnRAR Wrapper for PureBasic Programming Language.
 ## Environment
 
 - Windows 7 above (recommend)  
-- PureBasic 5.0 above (recommend)  
+- PureBasic 6.0 above (recommend)  
 - [UnRAR](https://www.rarlab.com/rar_add.htm)  
 
 ## How to Build
