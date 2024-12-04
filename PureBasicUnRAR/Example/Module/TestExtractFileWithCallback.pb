@@ -26,7 +26,7 @@ Procedure.i UnRARCallbackProc(msg.i, UserData.l, P1.l, P2.l)
     Case #UCM_CHANGEVOLUMEW
     Case #UCM_NEEDPASSWORDW 
   EndSelect
-  
+   
   ProcedureReturn 0
 EndProcedure
 
@@ -43,7 +43,7 @@ If DllOpen(lpszLibUnRARDll)
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
+  Define hRARArchiveHandle.i = UnRARArchive::OpenArchiveEx(@ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     UnRARArchive::SetCallback(hRARArchiveHandle, @UnRARCallbackProc(), 0)
@@ -52,7 +52,7 @@ If DllOpen(lpszLibUnRARDll)
     
     While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -62,6 +62,8 @@ If DllOpen(lpszLibUnRARDll)
       
       PrintN("Test File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -69,9 +71,9 @@ If DllOpen(lpszLibUnRARDll)
   
   DllClose()  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 21
-; FirstLine = 6
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 65
+; FirstLine = 21
 ; Folding = -
 ; EnableXP
 ; Executable = ..\..\ModuleTestExtractFileWithCallback.exe

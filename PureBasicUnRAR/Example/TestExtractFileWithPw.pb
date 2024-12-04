@@ -32,17 +32,19 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
     PrintN("Password: " + lpszPassword)
-    
+        
     RARSetPassword(hLibrary, hRARArchiveHandle, lpszPassword)
+    
+    ;PrintN("File: " + RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData))
                  
     While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -52,6 +54,8 @@ If hLibrary
       
       PrintN("Test File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -59,8 +63,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 15
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 42
+; FirstLine = 8
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFileWithPw.exe

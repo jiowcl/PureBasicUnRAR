@@ -35,14 +35,14 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
     
     While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -52,6 +52,8 @@ If hLibrary
       
       PrintN("Test File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -59,8 +61,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 23
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 55
+; FirstLine = 11
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractSFXFile.exe

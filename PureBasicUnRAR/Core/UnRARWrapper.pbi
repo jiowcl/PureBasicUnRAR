@@ -19,14 +19,14 @@ EndDeclareModule
 DeclareModule UnRARArchive 
   IncludeFile "Enums.pbi"
    
-  Declare.l OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)  
-  Declare.l ReadHeaderEx(hArcData.l, *HeaderData.RARHeaderDataEx)
-  Declare.l ProcessFileW(hArcData.l, Operation.l, DestPath.s, DestName.s)
-  Declare SetCallback(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)
-  Declare SetChangeVolProc(hArcData.l, *ChangeVolProc.UnRARChangeVolProc)
-  Declare SetProcessDataProc(hArcData.l, *ProcessDataProc.UnRARProcessDataProc)
-  Declare SetPassword(hArcData.l, Password.s)
-  Declare.l CloseArchive(hArcData.l)
+  Declare.i OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)  
+  Declare.i ReadHeaderEx(hArcData.i, *HeaderData.RARHeaderDataEx)
+  Declare.i ProcessFileW(hArcData.i, Operation.l, DestPath.s, DestName.s)
+  Declare SetCallback(hArcData.i, *UnRARCallback.UnRARCallbackProc, UserData.l)
+  Declare SetChangeVolProc(hArcData.i, *ChangeVolProc.UnRARChangeVolProc)
+  Declare SetProcessDataProc(hArcData.i, *ProcessDataProc.UnRARProcessDataProc)
+  Declare SetPassword(hArcData.i, Password.s)
+  Declare.i CloseArchive(hArcData.i)
   Declare.i GetDllVersion() 
 EndDeclareModule
 
@@ -76,7 +76,7 @@ Module UnRARArchive
   ; </summary>
   ; <param name="*ArchiveData"></param>
   ; <returns>Returns long.</returns>
-  Procedure.l OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)     
+  Procedure.i OpenArchiveEx(*ArchiveData.RAROpenArchiveDataEx)     
     ProcedureReturn RAROpenArchiveEx(UnRARWrapper::dllInstance, *ArchiveData)
   EndProcedure
   
@@ -86,7 +86,7 @@ Module UnRARArchive
   ; <param name="hArcData"></param>
   ; <param name="*HeaderData"></param>
   ; <returns>Returns long.</returns>
-  Procedure.l ReadHeaderEx(hArcData.l, *HeaderData.RARHeaderDataEx)      
+  Procedure.i ReadHeaderEx(hArcData.i, *HeaderData.RARHeaderDataEx)      
     ProcedureReturn RARReadHeaderEx(UnRARWrapper::dllInstance, hArcData, *HeaderData)
   EndProcedure
   
@@ -98,7 +98,7 @@ Module UnRARArchive
   ; <param name="DestPath"></param>
   ; <param name="DestName"></param>
   ; <returns>Returns long.</returns>
-  Procedure.l ProcessFileW(hArcData.l, Operation.l, DestPath.s, DestName.s)      
+  Procedure.i ProcessFileW(hArcData.i, Operation.l, DestPath.s, DestName.s)      
     ProcedureReturn RARProcessFileW(UnRARWrapper::dllInstance, hArcData, Operation, DestPath, DestName)
   EndProcedure
   
@@ -109,7 +109,7 @@ Module UnRARArchive
   ; <param name="*UnRARCallback"></param>
   ; <param name="UserData"></param>
   ; <returns>Returns void.</returns>
-  Procedure SetCallback(hArcData.l, *UnRARCallback.UnRARCallbackProc, UserData.l)      
+  Procedure SetCallback(hArcData.i, *UnRARCallback.UnRARCallbackProc, UserData.l)      
     ProcedureReturn RARSetCallback(UnRARWrapper::dllInstance, hArcData, *UnRARCallback, UserData)
   EndProcedure
   
@@ -119,7 +119,7 @@ Module UnRARArchive
   ; <param name="hArcData"></param>
   ; <param name="*ChangeVolProc"></param>
   ; <returns>Returns void.</returns>
-  Procedure SetChangeVolProc(hArcData.l, *ChangeVolProc.UnRARChangeVolProc)      
+  Procedure SetChangeVolProc(hArcData.i, *ChangeVolProc.UnRARChangeVolProc)      
     ProcedureReturn RARSetChangeVolProc(UnRARWrapper::dllInstance, hArcData, *ChangeVolProc)
   EndProcedure
   
@@ -129,7 +129,7 @@ Module UnRARArchive
   ; <param name="hArcData"></param>
   ; <param name="*ProcessDataProc"></param>
   ; <returns>Returns void.</returns>
-  Procedure SetProcessDataProc(hArcData.l, *ProcessDataProc.UnRARProcessDataProc)      
+  Procedure SetProcessDataProc(hArcData.i, *ProcessDataProc.UnRARProcessDataProc)      
     ProcedureReturn RARSetProcessDataProc(UnRARWrapper::dllInstance, hArcData, *ProcessDataProc)
   EndProcedure
    
@@ -139,7 +139,7 @@ Module UnRARArchive
   ; <param name="hArcData"></param>
   ; <param name="Password"></param>
   ; <returns>Returns void.</returns>
-  Procedure SetPassword(hArcData.l, Password.s)      
+  Procedure SetPassword(hArcData.i, Password.s)      
     ProcedureReturn RARSetPassword(UnRARWrapper::dllInstance, hArcData, Password)
   EndProcedure
   
@@ -148,7 +148,7 @@ Module UnRARArchive
   ; </summary>
   ; <param name="hArcData"></param>
   ; <returns>Returns long.</returns>
-  Procedure.l CloseArchive(hArcData.l)   
+  Procedure.i CloseArchive(hArcData.i)   
     ProcedureReturn RARCloseArchive(UnRARWrapper::dllInstance, hArcData)
   EndProcedure  
   
@@ -174,8 +174,8 @@ Module UnRARHelper
     ProcedureReturn RARHasSFX(FilePath)
   EndProcedure  
 EndModule
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 110
-; FirstLine = 99
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 150
+; FirstLine = 126
 ; Folding = ----
 ; EnableXP

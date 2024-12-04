@@ -8,8 +8,8 @@ XIncludeFile "Enums.pbi"
 XIncludeFile "Runtime.pbi"
 XIncludeFile "RARArchive.pbi"
 XIncludeFile "Helper.pbi"
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 3
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 8
 ; EnableXP
 ; IncludeVersionInfo
 ; VersionField2 = Inwazy Technology

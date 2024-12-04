@@ -19,6 +19,7 @@
 #ERAR_MISSING_PASSWORD = 22
 #ERAR_EREFERENCE       = 23
 #ERAR_BAD_PASSWORD     = 24
+#ERAR_LARGE_DICT       = 25
 
 #RAR_OM_LIST          = 0
 #RAR_OM_EXTRACT       = 1
@@ -31,7 +32,7 @@
 #RAR_VOL_ASK    = 0
 #RAR_VOL_NOTIFY = 1
 
-#RAR_DLL_VERSION = 8
+#RAR_DLL_VERSION = 9
 
 #RAR_HASH_NONE   = 0
 #RAR_HASH_CRC32  = 1
@@ -42,6 +43,7 @@
 #UCM_NEEDPASSWORD  = 2
 #UCM_CHANGEVOLUMEW = 3
 #UCM_NEEDPASSWORDW = 4
+#UCM_LARGEDICT     = 5
 
 ; Structure
 
@@ -88,6 +90,7 @@ Structure RARHeaderDataEx
   Hash.b[32]
   RedirType.l
   *RedirName
+  RedirNameSize.l
   DirTarget.l
   MtimeLow.l
   MtimeHigh.l
@@ -95,7 +98,11 @@ Structure RARHeaderDataEx
   CtimeHigh.l
   AtimeLow.l
   AtimeHigh.l
-  Reserved.l[988]
+  *ArcNameEx
+  ArcNameExSize.l
+  *FileNameEx
+  FileNameExSize.l
+  Reserved.l[982]
 EndStructure  
 
 Structure RAROpenArchiveData
@@ -122,7 +129,8 @@ Structure RAROpenArchiveDataEx
   UserData.i
   OpFlags.l
   *CmtBufW
-  Reserved.l[25]
+  *MarkOfTheWeb
+  Reserved.l[23]
 EndStructure
 
 ; Prototype Callback Function
@@ -130,9 +138,9 @@ EndStructure
 Prototype.i UnRARCallbackProc(Msg.i, UserData.l, P1.l, P2.l)
 Prototype.i UnRARChangeVolProc(*ArcName, Mode.i)
 Prototype.i UnRARProcessDataProc(*Addr.Long, Size.i)
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 130
-; FirstLine = 80
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 45
+; FirstLine = 23
 ; EnableXP
 ; IncludeVersionInfo
 ; VersionField2 = Inwazy Technology

@@ -38,7 +38,7 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     RARSetChangeVolProc(hLibrary, hRARArchiveHandle, @UnRARChangeVolProc())
@@ -47,7 +47,7 @@ If hLibrary
     
     While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -57,6 +57,8 @@ If hLibrary
       
       PrintN("Test File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -64,8 +66,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 22
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 60
+; FirstLine = 15
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFileWithDataProcess.exe

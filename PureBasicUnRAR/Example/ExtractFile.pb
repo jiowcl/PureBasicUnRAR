@@ -32,14 +32,14 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
     
     While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_EXTRACT, "", lpszOutputPath + "/" + extractFile)
+      Define hUnRARProcCode.i = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_EXTRACT, "", lpszOutputPath + "/" + extractFile)
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Extract File Failed: " + extractFile)
@@ -49,6 +49,8 @@ If hLibrary
       
       PrintN("Extract File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -56,8 +58,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x64)
-; CursorPosition = 11
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 52
+; FirstLine = 8
 ; Folding = -
 ; EnableXP
 ; Executable = ..\ExtractFile.exe

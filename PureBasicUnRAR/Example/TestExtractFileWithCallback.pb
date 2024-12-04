@@ -42,7 +42,7 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = RAROpenArchiveEx(hLibrary, @ArchiveData)
+  Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     RARSetCallback(hLibrary, hRARArchiveHandle, @UnRARCallbackProc(), 0)
@@ -51,7 +51,7 @@ If hLibrary
     
     While RARReadHeaderEx(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = RARProcessFileW(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -61,6 +61,8 @@ If hLibrary
       
       PrintN("Test File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -68,8 +70,9 @@ If hLibrary
   
   UnRARDllClose(hLibrary)  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 20
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 64
+; FirstLine = 18
 ; Folding = -
 ; EnableXP
 ; Executable = ..\TestExtractFileWithCallback.exe

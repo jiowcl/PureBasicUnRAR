@@ -39,7 +39,7 @@ If DllOpen(lpszLibUnRARDll)
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.l = UnRARArchive::OpenArchiveEx(@ArchiveData)
+  Define hRARArchiveHandle.i = UnRARArchive::OpenArchiveEx(@ArchiveData)
    
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     UnRARArchive::SetChangeVolProc(hRARArchiveHandle, @UnRARChangeVolProc())
@@ -48,7 +48,7 @@ If DllOpen(lpszLibUnRARDll)
     
     While UnRARArchive::ReadHeaderEx(hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileNameW) 
-      Define hUnRARProcCode.l = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = UnRARArchive::ProcessFileW(hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -58,6 +58,8 @@ If DllOpen(lpszLibUnRARDll)
       
       PrintN("Test File: " + extractFile)
     Wend
+    
+    PrintN("Completed")
   EndIf
   
   Input()
@@ -65,8 +67,9 @@ If DllOpen(lpszLibUnRARDll)
   
   DllClose()  
 EndIf
-; IDE Options = PureBasic 5.72 (Windows - x86)
-; CursorPosition = 19
+; IDE Options = PureBasic 6.12 LTS (Windows - x64)
+; CursorPosition = 61
+; FirstLine = 17
 ; Folding = -
 ; EnableXP
 ; Executable = ..\..\ModuleTestExtractFileWithDataProcess.exe
