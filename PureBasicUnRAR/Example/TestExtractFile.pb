@@ -32,7 +32,7 @@ If hLibrary
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
   Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
-   
+  
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
     
@@ -60,7 +60,7 @@ If hLibrary
   UnRARDllClose(hLibrary)  
 EndIf
 ; IDE Options = PureBasic 6.12 LTS (Windows - x64)
-; CursorPosition = 27
+; CursorPosition = 34
 ; FirstLine = 10
 ; Folding = -
 ; EnableXP

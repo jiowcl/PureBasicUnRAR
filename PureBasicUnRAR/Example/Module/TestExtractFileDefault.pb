@@ -5,7 +5,10 @@
 
 EnableExplicit
 
-IncludeFile "../Core/UnRAR.pbi"
+IncludeFile "../../Core/Enums.pbi"
+IncludeFile "../../Core/UnRARWrapper.pbi"
+
+UseModule UnRARWrapper
 
 ; UnRAR version (x86/x64)
 CompilerIf #PB_Compiler_Processor = #PB_Processor_x64
@@ -16,11 +19,9 @@ CompilerEndIf
 
 Global lpszSampleFilePath.s = "TestFile/example.rar"
 
-Global hLibrary.i = UnRARDllOpen(lpszLibUnRARDll)
-
-If hLibrary
+If DllOpen(lpszLibUnRARDll)
   OpenConsole()
-   
+  
   Define HeaderData.RARHeaderData
   Define ArchiveData.RAROpenArchiveDataEx
   
@@ -31,16 +32,14 @@ If hLibrary
   ArchiveData\CmtBuf = @ArchiveDataCmt
   ArchiveData\CmtBufSize = SizeOf(ArchiveDataCmt)
   
-  Define hRARArchiveHandle.i = RAROpenArchiveEx(hLibrary, @ArchiveData)
-    
+  Define hRARArchiveHandle.i = UnRARArchive::OpenArchiveEx(@ArchiveData)
+   
   If ArchiveData\OpenResult = #ERAR_SUCCESS
     PrintN("Source: " + lpszSampleFilePath)
     
-    While RARReadHeader(hLibrary, hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
-      PrintN("File: " + PeekS(@HeaderData\FileName, -1, #PB_Ascii))
-      
+    While UnRARArchive::ReadHeader(hRARArchiveHandle, @HeaderData) = #ERAR_SUCCESS
       Define extractFile.s = PeekS(@HeaderData\FileName, -1, #PB_Ascii) 
-      Define hUnRARProcCode.i = RARProcessFile(hLibrary, hRARArchiveHandle, #RAR_TEST, "", "")
+      Define hUnRARProcCode.i = UnRARArchive::ProcessFile(hRARArchiveHandle, #RAR_TEST, "", "")
       
       If hUnRARProcCode <> #ERAR_SUCCESS
         PrintN("Test File Failed: " + extractFile)
@@ -57,12 +56,12 @@ If hLibrary
   Input()
   CloseConsole()
   
-  UnRARDllClose(hLibrary)  
+  DllClose()  
 EndIf
 ; IDE Options = PureBasic 6.12 LTS (Windows - x64)
-; CursorPosition = 34
-; FirstLine = 11
+; CursorPosition = 40
+; FirstLine = 10
 ; Folding = -
 ; EnableXP
-; Executable = ..\TestExtractFile.exe
-; CurrentDirectory = ../
+; Executable = ..\..\ModuleTestExtractFile.exe
+; CurrentDirectory = ../../
